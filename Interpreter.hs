@@ -9,17 +9,26 @@ data Prog
      = LAMBDA Id Expr
 
 data Expr
-     = ZERO | ONE | Id
+     = ZERO
+     | ONE
+     | ID Id
      | IF Expr Expr Expr
      | FOLD Expr Expr Id Id Expr
-     | OP1 Expr
-     | OP2 Expr Expr 
+     | OP1 Op1
+     | OP2 Op2
 
-data OP1
-     = NOT | SHL1 | SHR1 | SHR4 | SHR16
+data Op1
+     = NOT   Expr
+     | SHL1  Expr
+     | SHR1  Expr
+     | SHR4  Expr
+     | SHR16 Expr
 
-data OP2
-     = AND | OR | XOR | PLUS
+data Op2
+     = AND  Expr Expr
+     | OR   Expr Expr
+     | XOR  Expr Expr
+     | PLUS Expr Expr
 
 type Id
         = String
